@@ -1,0 +1,10 @@
+{
+  "cats": [
+    {
+      "id": "1",
+      "name": "Jojo",
+      "goOutside": true,
+      "foundHome": false
+    }
+  ]
+}
