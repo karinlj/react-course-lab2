@@ -1,8 +1,8 @@
 // import "./Button.scss";
 import styled from "styled-components";
-import { colors } from "../../styles/variables";
+import { colors } from "../styles/variables";
 
-const Button = styled.button.attrs({
+const StyledButton = styled.button.attrs({
   className: "submit-btn",
 })`
   border-radius: 8px;
@@ -23,7 +23,7 @@ const Button = styled.button.attrs({
 `;
 
 const SubmitButton = ({ handleClick }) => {
-  return <Button onClick={handleClick}>Add cat</Button>;
+  return <StyledButton onClick={handleClick}>Add cat</StyledButton>;
 };
 
 export default SubmitButton;

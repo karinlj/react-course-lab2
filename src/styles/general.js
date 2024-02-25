@@ -1,4 +1,7 @@
-@import "./variables.scss";
+import { createGlobalStyle } from "styled-components";
+import { colors } from "./variables";
+
+const GlobalStyle = createGlobalStyle`
 
 //reset
 ul {
@@ -22,18 +25,24 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: $themecolorBlue;
+  background: ${({ theme }) => theme.background_color};
   font-size: 1.1rem;
+}
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 h1 {
   width: 100%;
   font-size: 3.2em;
   line-height: 1.1;
-  color: $themecolorPink;
+  color: ${({ theme }) => theme.heading_color};
   margin: 1rem 0;
 }
 p {
-  color: #fff;
+    color: ${({ theme }) => theme.text_color};
+
 }
 
 button {
@@ -41,6 +50,15 @@ button {
   border-radius: 8px;
   &:focus {
     outline: 2px dotted -webkit-focus-ring-color;
-    outline-color: $themecolorBlue;
+    outline-color: ${colors.themecolorBlue};
   }
 }
+
+.error-message{
+    color: ${colors.themecolorRed};
+  font-weight: 600;
+}
+
+
+ `;
+export default GlobalStyle;

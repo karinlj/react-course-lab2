@@ -5,6 +5,47 @@
       "name": "Jojo",
       "goOutside": true,
       "foundHome": false
+    },
+    {
+      "id": "2",
+      "name": "Filip",
+      "goOutside": true,
+      "foundHome": false
+    },
+    {
+      "id": 0.42786770776346117,
+      "name": "Vilda",
+      "goOutside": true,
+      "foundHome": false
+    },
+    {
+      "id": 0.198368650684009,
+      "name": "Hugo",
+      "goOutside": true,
+      "foundHome": false
+    }
+  ],
+  "catUpdates": [
+    {
+      "id": "1",
+      "catId": "2",
+      "type": "moveIn",
+      "address": "",
+      "date": "Thu Feb 1 2024 21:06:34 GMT+0100"
+    },
+    {
+      "id": "2",
+      "catId": "2",
+      "type": "moveOut",
+      "address": "smögen",
+      "date": "Thu Feb 22 2024 21:06:34 GMT+0100"
+    },
+    {
+      "id": "1",
+      "catId": "1",
+      "type": "moveIn",
+      "address": "",
+      "date": "Thu Feb 1 2024 21:06:34 GMT+0100"
     }
   ]
 }
