@@ -1,13 +1,14 @@
-# Cat Shelter 2
+# the Cat Shelter
 
-<img width="500px" src="./src/assets/Screenshot_new.jpg" alt="Cat Shelter" />
+<img width="500px" src="./src/assets/Screenshot_new.jpg" alt="Cat Shelter 2" />
 
 ## React course-Lab2
 
 React project using the Vite tool. <br/>
+Fetching and updating data with JSON server av DB.
 CRUD project adding cats to Cat Shelter list. <br/>
 Adding cat and choose if he needs to go outside or can be indoor cat. <br/>
-In list toggle if he found new home or not and delete if he has moved to the new home.
+In list toggle if he found new home or not and click the dark pink house if he has moved to the new home.
 
 ## Installation
 
@@ -23,13 +24,19 @@ To install
 
 To run
 
-`npm run dev`
+first run `json-server --watch db.json --port 9000`
+
+then open a new terminal and run `npm run dev`
+
+Log in
+
+email: karin@test.se, password 1234
 
 ## Built With
 
 - Vite
 - React.js
-- Scss
+- JSON server
 - Styled Components
 - Fontawesome
 
