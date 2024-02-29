@@ -1,14 +1,18 @@
 export const colors = {
-  themecolorLila: "#9900cc",
+  themecolorLila: "#4d0099",
   themecolorBlue: "#022c64",
   themecolorBlueLight: "#1d7dfc",
-  themecolorBlueSuperLight: "#b4d4fd",
+  themecolorBlueSuperLight: "#cde2fe",
+  themecolorPinkDark: "#ff6666",
   themecolorPink: "#ff9999",
   themecolorPinkLight: "#ffe6e6",
   themecolorRed: "#e60000",
+  themecolorGreen: "#15b756",
+  themecolorGreenDark: "#108940",
+  themecolorGray: "#8c8c8c",
+  themecolorGrayDark: "#737373",
   themeBorderColor: "#e0e0e0",
   themecolor: "#022c64",
-  themecolorGreen: "#15b756",
 };
 
 export const themeSettings = {
@@ -22,7 +26,7 @@ export const blueTheme = {
   background_color: colors.themecolorBlue,
   header_paragraph_color: colors.themecolorBlueSuperLight,
   heading_color: colors.themecolorPink,
-  text_color: "#fff",
+  text_color: colors.themecolorBlueSuperLight,
   btn_color: colors.themecolorBlueLight,
 };
 export const pinkTheme = {

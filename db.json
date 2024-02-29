@@ -1,51 +1,42 @@
 {
   "cats": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Jojo",
-      "goOutside": true,
-      "foundHome": false
+      "goOutside": false,
+      "foundHome": true
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Filip",
       "goOutside": true,
-      "foundHome": false
+      "foundHome": true
     },
     {
-      "id": 0.42786770776346117,
+      "id": 90,
+      "date": "2024-02-29",
       "name": "Vilda",
       "goOutside": true,
       "foundHome": false
     },
     {
-      "id": 0.198368650684009,
-      "name": "Hugo",
+      "id": 7814,
+      "date": "2024-02-29",
+      "name": "lukas",
       "goOutside": true,
       "foundHome": false
     }
   ],
-  "catUpdates": [
+  "users": [
     {
       "id": "1",
-      "catId": "2",
-      "type": "moveIn",
-      "address": "",
-      "date": "Thu Feb 1 2024 21:06:34 GMT+0100"
+      "email": "karin@test.se",
+      "password": "1234"
     },
     {
       "id": "2",
-      "catId": "2",
-      "type": "moveOut",
-      "address": "smögen",
-      "date": "Thu Feb 22 2024 21:06:34 GMT+0100"
-    },
-    {
-      "id": "1",
-      "catId": "1",
-      "type": "moveIn",
-      "address": "",
-      "date": "Thu Feb 1 2024 21:06:34 GMT+0100"
+      "email": "mats@test.se",
+      "password": "4321"
     }
   ]
 }

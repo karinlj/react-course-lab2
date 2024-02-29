@@ -1,64 +1,86 @@
-import { createGlobalStyle } from "styled-components";
-import { colors } from "./variables";
+import styled from "styled-components";
+import { colors, themeSettings } from "../styles/variables";
 
-const GlobalStyle = createGlobalStyle`
-
-//reset
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-* {
-  box-sizing: border-box;
-}
-:root {
-  font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background: ${({ theme }) => theme.background_color};
-  font-size: 1.1rem;
-}
-#root {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-h1 {
-  width: 100%;
-  font-size: 3.2em;
-  line-height: 1.1;
-  color: ${({ theme }) => theme.heading_color};
-  margin: 1rem 0;
-}
-p {
-    color: ${({ theme }) => theme.text_color};
-
-}
-
-button {
-  border: 1px solid transparent;
+export const StyledButton = styled.button`
   border-radius: 8px;
-  &:focus {
-    outline: 2px dotted -webkit-focus-ring-color;
-    outline-color: ${colors.themecolorBlue};
+  border: 2px solid transparent;
+  padding: 0.3rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  background: ${(props) =>
+    props.background ? props.background : `${colors.themecolorGreen}`};
+
+  margin-left: 0.5rem;
+  transition: all 0.3s ease;
+  color: #fff;
+  &:hover {
+    border: 2px solid ${colors.themecolorGreen};
   }
-}
+`;
 
-.error-message{
-    color: ${colors.themecolorRed};
+export const StyledLink = styled.a`
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 0.3rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  background: ${colors.themecolorPink};
+  margin-left: 0.5rem;
+  transition: all 0.3s ease;
+  color: #fff;
+  text-decoration: none;
+  &:hover {
+    border: 2px solid ${colors.themecolorPinkLight};
+  }
+`;
+
+export const StyledShelterSection = styled.section.attrs({
+  className: "styled-shelter-section ",
+})`
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .preamble {
+    font-size: 1.2rem;
+  }
+`;
+export const StyledFormDiv = styled.div.attrs({
+  className: "styled-form-div",
+})`
+  background-color: #fff;
+  border-radius: ${themeSettings.themeBorderRadius};
+  box-shadow: ${themeSettings.themeBoxShadow};
+  line-height: 1.5rem;
+  padding: 0.9rem 1.4rem;
+  margin: 0;
+  border-bottom: 1px solid ${colors.themeBorderColor};
+  margin: 1rem 0;
+`;
+
+export const StyledLabel = styled.label.attrs({
+  className: "styled-label",
+})`
+  display: block;
+  width: 100%;
+  color: ${colors.themecolor};
   font-weight: 600;
-}
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+`;
 
-
- `;
-export default GlobalStyle;
+export const StyledInput = styled.input.attrs({
+  className: "styled-input",
+})`
+  width: 100%;
+  padding-right: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-bottom: 1px solid ${colors.themeBorderColor};
+  font-size: 1rem;
+`;
