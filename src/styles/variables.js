@@ -1,11 +1,11 @@
 export const colors = {
-  themecolorLila: "#4d0099",
+  themecolorLila: "#8a00e6",
   themecolorBlue: "#022c64",
   themecolorBlueLight: "#1d7dfc",
   themecolorBlueSuperLight: "#cde2fe",
   themecolorPinkDark: "#ff6666",
   themecolorPink: "#ff9999",
-  themecolorPinkLight: "#ffe6e6",
+  themecolorPinkLight: "#f8eded",
   themecolorRed: "#e60000",
   themecolorGreen: "#15b756",
   themecolorGreenDark: "#108940",
@@ -19,7 +19,6 @@ export const themeSettings = {
   themeBorderRadius: "8px",
   $themeBoxShadow:
     "0 7px 34px 0 rgba(0, 0, 0, 0.07), 0 11px 34px 0 rgba(0, 0, 0, 0.04)",
-  $themefont: "Roboto, Helvetica, sans-serif",
 };
 
 export const blueTheme = {

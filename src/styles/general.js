@@ -9,9 +9,8 @@ export const StyledButton = styled.button`
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  background: ${(props) =>
-    props.background ? props.background : `${colors.themecolorGreen}`};
-
+  background: ${({ $primary }) =>
+    $primary ? "gray" : `${colors.themecolorGreen}`};
   margin-left: 0.5rem;
   transition: all 0.3s ease;
   color: #fff;

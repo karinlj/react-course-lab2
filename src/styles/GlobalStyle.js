@@ -12,6 +12,7 @@ ul {
 * {
   box-sizing: border-box;
 }
+//general
 :root {
   font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -59,7 +60,7 @@ button {
   }
 }
 .error-message{
-    color: ${colors.themecolorRed};
+  color: ${colors.themecolorRed};
   font-weight: 600;
 }
  `;

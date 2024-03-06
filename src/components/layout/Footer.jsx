@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+const Footer = () => {
+  return (
+    <StyledFooter>
+      <p>@ {new Date().getFullYear()}- Karin Ljunggren</p>
+    </StyledFooter>
+  );
+};
+export default Footer;
+
 const StyledFooter = styled.footer.attrs({
   className: "footer",
 })`
@@ -9,12 +18,3 @@ const StyledFooter = styled.footer.attrs({
     font-size: 0.9rem;
   }
 `;
-const Footer = () => {
-  return (
-    <StyledFooter>
-      <p>@ {new Date().getFullYear()}- Karin Ljunggren</p>
-    </StyledFooter>
-  );
-};
-
-export default Footer;

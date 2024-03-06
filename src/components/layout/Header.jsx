@@ -1,9 +1,51 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 
 import styled from "styled-components";
 import { colors } from "../../styles/variables";
 import { StyledLink, StyledButton } from "../../styles/general";
 import AuthContext from "../../context/AuthContext";
+
+const Header = ({ themeToggler, isDarkMode }) => {
+  const { isLoggedIn, logout } = useContext(AuthContext);
+
+  let path = window.location.pathname;
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  return (
+    <StyledHeader>
+      <div className="upper">
+        <p>
+          React course - Lab 2
+          <br />
+          Karin Ljunggren
+        </p>
+        <StyledToggleThemeBtn onClick={themeToggler} aria-label="Toggle theme">
+          {isDarkMode ? (
+            <i className="fas fa-sun" aria-hidden="true"></i>
+          ) : (
+            <i className="fas fa-moon" aria-hidden="true"></i>
+          )}
+        </StyledToggleThemeBtn>
+      </div>
+      {/* changing buttons depending on isLoggedIn state */}
+      <div className="lower">
+        {!isLoggedIn && path !== "/login" && (
+          <StyledLink href="/login">Login</StyledLink>
+        )}
+
+        {isLoggedIn && path !== "/login" && (
+          <StyledButton onClick={handleLogout}>Logout</StyledButton>
+        )}
+
+        {path === "/login" && <StyledLink href="/">Back to Home</StyledLink>}
+      </div>
+    </StyledHeader>
+  );
+};
+export default Header;
 
 const StyledHeader = styled.header.attrs({
   className: "header",
@@ -47,51 +89,3 @@ export const StyledToggleThemeBtn = styled.button.attrs({
     position: relative;
   }
 `;
-
-const Header = ({ themeToggler, isDarkMode }) => {
-  const { isLoggedIn, logout } = useContext(AuthContext);
-
-  let path = window.location.pathname;
-
-  const handleLogout = () => {
-    console.log("handleLogout:");
-    logout();
-  };
-
-  useEffect(() => {
-    // console.log("isLoggedIn- Header:", isLoggedIn);
-  }, []);
-
-  return (
-    <StyledHeader>
-      <div className="upper">
-        <p>
-          React course - Lab 2
-          <br />
-          Karin Ljunggren
-        </p>
-        <StyledToggleThemeBtn onClick={themeToggler} aria-label="Toggle theme">
-          {isDarkMode ? (
-            <i className="fas fa-sun" aria-hidden="true"></i>
-          ) : (
-            <i className="fas fa-moon" aria-hidden="true"></i>
-          )}
-        </StyledToggleThemeBtn>
-      </div>
-
-      <div className="lower">
-        {!isLoggedIn && path !== "/login" && (
-          <StyledLink href="/login">Login</StyledLink>
-        )}
-
-        {isLoggedIn && path !== "/login" && (
-          <StyledButton onClick={handleLogout}>Logout</StyledButton>
-        )}
-
-        {path === "/login" && <StyledLink href="/">Back to Home</StyledLink>}
-      </div>
-    </StyledHeader>
-  );
-};
-
-export default Header;

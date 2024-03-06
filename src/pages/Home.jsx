@@ -1,6 +1,8 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import AuthContext from "../context/AuthContext";
 import { StyledShelterSection } from "../styles/general";
+import styled from "styled-components";
+import { colors } from "../styles/variables";
 import ItemsList from "../components/ItemsList";
 import AddItemForm from "../components/AddItemForm";
 
@@ -14,10 +16,9 @@ const Home = () => {
   const getCats = async () => {
     try {
       const response = await fetch(catsUrl);
-      // console.log("response:", response);
       const data = await response.json();
-      // console.log("data:", data);
       setCats(data);
+
       setError(null);
     } catch (error) {
       console.log("error:", error);
@@ -25,13 +26,12 @@ const Home = () => {
     }
   };
 
+  //upadate UI
   const addItemToUI = (newItem) => {
     setCats([...cats, newItem]);
   };
-
+  //upadate UI
   const toggleFoundHometoUI = (id) => {
-    console.log("toggleFoundHome:");
-
     const updatedCats = cats.map((cat) => {
       if (cat.id === id) {
         return { ...cat, foundHome: !cat.foundHome };
@@ -40,8 +40,18 @@ const Home = () => {
     setCats(updatedCats);
   };
 
+  const sortCats = (cats) => {
+    // console.log("Sorting cats...");
+    return cats.sort((a, b) => a.name.localeCompare(b.name));
+  };
+
+  //This will sort the cats unnecessarily on changing Theme for example
+  //const sortedCats = sortCats(cats);
+  //useMemo to cache the sorting
+  const sortedCats = useMemo(() => sortCats(cats), [cats]);
+
+  //upadate UI
   const handleMovedFromUI = (id) => {
-    console.log("handleMovedFromUI:");
     const updatedCats = cats.filter((cat) => {
       return cat.id !== id;
     });
@@ -50,7 +60,6 @@ const Home = () => {
 
   useEffect(() => {
     getCats();
-    console.log("Home- cats", cats);
   }, []);
 
   return (
@@ -60,17 +69,27 @@ const Home = () => {
         <p className="preamble">
           Current inhabitants at the Cat Shelter. <br />
           Some cats wants to go out, and some can stay indoors. <br />
-          If the lightgrey house icon is enabled, the cat has found a new home.
-          Press the dark pink house if the cat has moved to its new home to
-          delete from list.
+          Toggle the lightgrey house icon to enable if the cat has found a new
+          home. Press the dark pink house if the cat has moved to its new home
+          to delete from list.
         </p>
         {error && <p className="error-message">{error}</p>}
+        {cats.length > 1 && (
+          <StyledHeading>
+            There are{" "}
+            <span
+              style={{ color: `${colors.themecolorPink}`, fontSize: "1.3rem" }}
+            >
+              {cats.length}{" "}
+            </span>
+            cats at the shelter today.
+          </StyledHeading>
+        )}
         <ItemsList
-          items={cats}
+          items={sortedCats}
           toggleFoundHometoUI={toggleFoundHometoUI}
           handleMovedFromUI={handleMovedFromUI}
         />
-
         {isLoggedIn && <AddItemForm addItemToUI={addItemToUI} />}
       </StyledShelterSection>
     </main>
@@ -78,3 +97,10 @@ const Home = () => {
 };
 
 export default Home;
+
+const StyledHeading = styled.h5.attrs({
+  className: "styled-cats-heading",
+})`
+  color: ${({ theme }) => theme.text_color};
+  margin-bottom: 0;
+`;

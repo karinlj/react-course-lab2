@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import {
   StyledFormDiv,
   StyledInput,
@@ -8,7 +8,7 @@ import {
 
 const AddItemForm = ({ addItemToUI }) => {
   const defaultInputValues = {
-    id: Math.floor(Math.random() * 10001),
+    id: Math.floor(Math.random() * 10001), //random id
     date: new Date().toJSON().slice(0, 10),
     name: "",
     goOutside: true,
@@ -26,34 +26,29 @@ const AddItemForm = ({ addItemToUI }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newItem = {
       ...formData,
     };
 
-    //get items and post new item
-    const addItem = async (newItem) => {
-      try {
-        const response = await fetch(catsUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newItem),
-        });
-        const data = await response.json();
-        console.log("addItem-data:", data);
-        setError(null);
-      } catch (error) {
-        console.log("add item error:", error);
-        setError("Ooops!! Could not fetch and add data...");
-      }
+    //add item to db
+    const addItem = () => {
+      fetch(catsUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newItem),
+      })
+        .then(() => {
+          //upadate UI since list and add-form on same page
+          addItemToUI(newItem);
+          setFormData(defaultInputValues);
+          setError(null);
+        })
+        .catch((err) => console.log("add item error:", err.message));
     };
-    addItem(newItem);
-    addItemToUI(newItem);
-    setFormData(defaultInputValues);
-  };
 
-  useEffect(() => {
-    // console.log("AddItemForm: ");
-  }, []);
+    addItem();
+  };
 
   return (
     <form style={{ width: "100%" }} onSubmit={handleSubmit}>
@@ -90,9 +85,7 @@ const AddItemForm = ({ addItemToUI }) => {
         </div>
       </StyledFormDiv>
       <section style={{ width: "100%", textAlign: "right" }}>
-        <StyledButton onClick={focusInput} $bgGreen="true">
-          Add Cat
-        </StyledButton>
+        <StyledButton onClick={focusInput}>Add Cat</StyledButton>
       </section>
     </form>
   );

@@ -5,10 +5,12 @@
 ## React course-Lab2
 
 React project using the Vite tool. <br/>
-Fetching and updating data with JSON server av DB.
-CRUD project adding cats to Cat Shelter list. <br/>
-Adding cat and choose if he needs to go outside or can be indoor cat. <br/>
-In list toggle if he found new home or not and click the dark pink house if he has moved to the new home.
+Fetching and updating DB data with JSON server.
+A Cat Shelter list where you can see the a list of the current cats. <br/>
+If you are logged in you can add cats and choose if he needs to go outside or can be indoor cat. <br/>
+In list toggle if he found new home or not and click the dark pink house if he has moved to the new home to delete him from the list.
+You can also toggle from dark blue to light pink theme.
+Enjoy!
 
 ## Installation
 

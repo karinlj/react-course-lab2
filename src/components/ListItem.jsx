@@ -1,30 +1,29 @@
 import styled from "styled-components";
 import { colors } from "../styles/variables";
-import { useState, useEffect } from "react";
 
 const ListItem = ({ item, toggleFoundHometoUI, handleMovedFromUI }) => {
   const catUrl = "http://localhost:9000/cats/" + item.id;
 
+  //update foundHome property in db
   const toggleFoundHome = (id) => {
     fetch(catUrl, {
-      method: "PATCH", //update
-      headers: { "Content-Type": "application/json" }, //sending json-data
-      body: JSON.stringify({ foundHome: !item.foundHome }), //sending the data in a string made from js-object
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ foundHome: !item.foundHome }),
     })
       .then(() => {
         //update item locally
         toggleFoundHometoUI(id);
-        // context.emit("complete", props.project.id);
       })
       .catch((err) => console.log(err.message));
   };
 
+  //delete item from db if has moved to new home
   const handleMoved = (id) => {
-    console.log("handleMoved", id);
     fetch(catUrl, {
-      method: "DELETE", //update
-      headers: { "Content-Type": "application/json" }, //sending json-data
-      body: JSON.stringify({ foundHome: !item.foundHome }), //sending the data in a string made from js-object
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ foundHome: !item.foundHome }),
     })
       .then(() => {
         //update item locally
@@ -32,11 +31,6 @@ const ListItem = ({ item, toggleFoundHometoUI, handleMovedFromUI }) => {
       })
       .catch((err) => console.log(err.message));
   };
-
-  useEffect(() => {
-    console.log("ListItem-item", item.id);
-    console.log("ListItem-catUrl", catUrl);
-  }, [item]);
 
   return (
     <StyledListItem key={item.id}>
@@ -103,7 +97,7 @@ const StyledListItem = styled.li.attrs({
     color: ${colors.themecolorGreen};
   }
   .new-home {
-    color: #b3b3b3;
+    color: #ccc;
     cursor: pointer;
     transition: all 0.3s ease;
     &:hover {

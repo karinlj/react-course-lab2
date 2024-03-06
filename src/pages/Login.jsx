@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import {
   StyledFormDiv,
@@ -7,28 +7,19 @@ import {
   StyledButton,
   StyledShelterSection,
 } from "../styles/general";
-import { colors } from "../styles/variables";
 
 function Login() {
-  const { login, isLoggedIn } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    console.log("handleLogin:", login);
     const userUrl = `http://localhost:9000/users?email=${email}`;
     try {
       const response = await fetch(userUrl);
-      // console.log("response:", response);
-
       const data = await response.json();
-      // console.log("data:", data);
-
       const userData = data[0];
-      // console.log("userData:", userData);
-
       if (userData && userData.password === password) {
         login(userData);
       } else {
@@ -42,16 +33,11 @@ function Login() {
   };
 
   const handleCancelLogin = () => {
-    // console.log("handleCancelLogin");
     setEmail("");
     setPassword("");
     //redirect to home
-    // window.location.pathname = "/";
+    window.location.pathname = "/";
   };
-
-  useEffect(() => {
-    console.log("isLoggedIn-Login:", isLoggedIn);
-  }, [isLoggedIn]);
 
   return (
     <main>
@@ -76,7 +62,7 @@ function Login() {
             </StyledLabel>
             <section style={{ width: "100%", textAlign: "right" }}>
               <StyledButton>Login</StyledButton>
-              <StyledButton onClick={handleCancelLogin} background="gray">
+              <StyledButton onClick={handleCancelLogin} $primary>
                 Cancel
               </StyledButton>
             </section>
@@ -86,5 +72,4 @@ function Login() {
     </main>
   );
 }
-
 export default Login;
