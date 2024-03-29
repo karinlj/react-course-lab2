@@ -6,10 +6,10 @@
 
 React project using the Vite tool. <br/>
 Fetching and updating DB data with JSON server.
-A Cat Shelter list where you can see the list of the current cats. <br/>
+A Cat Shelter list where you can see all the current cats. <br/>
 If you are logged in you can add cats and choose if he needs to go outside or can be indoor cat. <br/>
 In list toggle if he found new home or not and click the dark pink house if he has moved to the new home to delete him from the list.
-You can also toggle from dark blue to light pink theme.
+You can also toggle from dark blue to light pink theme in the header.
 Enjoy!
 
 ## Installation
