@@ -37,7 +37,7 @@ body {
 
 }
 main{
-  margin-top: 5rem;
+  margin-top: 1rem;
   min-height: 70vh;
 }
 h1 {
